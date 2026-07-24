@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('/public/font/RedHatText-VariableFont_wght.ttf');
+}
+
+* {
+    font-family: 'MyFont';
+}
