@@ -1,9 +1,10 @@
 import { BiXCircle } from "react-icons/bi"
-const OrderCard = ({ orderedMenu, setOrderedMenu }) => {
+const OrderCard = ({ orderedMenu, setOrderedMenu, count, setCount }) => {
     const handleDelete = (i) => {
         let filter = orderedMenu.filter((order, index) => {
             return i != index
         })
+        setCount(count = 1)
         setOrderedMenu(filter)
     }
 
@@ -44,7 +45,7 @@ const OrderCard = ({ orderedMenu, setOrderedMenu }) => {
                 <h1 className="text-xl font-bold">{current} AFN</h1>
             </div>
             <div>
-                <button className="p-2 rounded-4xl text-white bg-orange-800 w-full hover:cursor-pointer" onClick={() => orderedMenu.length == 0 ? alert('Cart is Empty!') : setOrderedMenu([])}>Confirm Order</button>
+                <button className="p-2 rounded-4xl text-white bg-orange-800 w-full hover:cursor-pointer">Confirm Order</button>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import Card from "./Card"
 import Dessertmenu from "./data"
 
-const Cards = ({ orderedMenu, setOrderedMenu }) => {
+const Cards = ({ orderedMenu, setOrderedMenu, setCount, count }) => {
     return (
         <div className="w-7/10 h-full flex flex-col gap-6">
             <div>
@@ -9,7 +9,7 @@ const Cards = ({ orderedMenu, setOrderedMenu }) => {
             </div>
             <div className="grid grid-cols-4 gap-6">
                 {Dessertmenu.map((dessert) => {
-                    return <Card data={dessert}  orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} />
+                    return <Card data={dessert}  orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} setCount={setCount} count={count} />
                 })}
             </div>
         </div>

@@ -1,33 +1,10 @@
 import { useState } from 'react'
 import { BsCartPlus } from "react-icons/bs";
-import { PiMinusCircle, PiPlusCircle } from 'react-icons/pi';
-const Card = ({ data, orderedMenu, setOrderedMenu }) => {
-
+// import { PiMinusCircle, PiPlusCircle } from 'react-icons/pi';
+const Card = ({ data, orderedMenu, setOrderedMenu, setCount, count }) => {
     const { image, type, dessert, price } = data
-    const [count, setCount] = useState(0)
-    const [show, setShow] = useState({
-        minusBtn: <h1 className='text-orange-800'>Add to Cart</h1>,
-        count: <BsCartPlus className='text-orange-800 text-[23px]' />,
-        plusBtn: '',
-    })
-
-    const handleChange = () => {
-        setShow({
-            ...show,
-            minusBtn: <button onClick={() => handleAddToCart('Minus')} className='hover:cursor-pointer'><PiMinusCircle className='text-orange-600 text-[22px] hover:text-orange-900' /></button>,
-            count: <p className='text-orange-600'>{count}</p>,
-            plusBtn: <button onClick={() => handleAddToCart('Add')} className='hover:cursor-pointer'><PiPlusCircle className='text-orange-600 text-[22px] hover:text-orange-900' /></button>,
-        })
-    }
-
-    const handleAddToCart = (type) => {
-        if (type == 'Minus') {
-            setCount(count - 1)
-        }
-        if (type == 'Add') {
-            setCount(count + 1)
-        }
-
+    const handleAddToCart = () => {
+        setCount(count + 1)
         const obj = {
             name: dessert,
             quantity: count,
@@ -36,14 +13,13 @@ const Card = ({ data, orderedMenu, setOrderedMenu }) => {
         setOrderedMenu([...orderedMenu, obj])
 
     }
-
     return (
         <div className='h-75 w-full flex flex-col'>
             <div className='h-8/10 w-full flex flex-col items-center'>
                 < img src={image} className='h-full w-full rounded-xl object-cover' />
-                <button className='bg-white rounded-4xl border border-gray-500/30 w-38 flex items-center justify-center gap-2 h-11 relative z-10 bottom-5 font-medium hover:cursor-pointer outline-none' style={{
-                    justifyContent: show.plusBtn != '' ? 'space-around' : 'center'}} onClick={() => handleChange()}>
-                    {show.minusBtn}{show.count}{show.plusBtn}
+                <button className='bg-white rounded-4xl border border-gray-500/30 w-38 flex items-center justify-center gap-2 h-11 relative z-10 bottom-5 font-medium hover:cursor-pointer outline-none' onClick={handleAddToCart}>
+                    <BsCartPlus className='text-orange-800 text-[23px]' />
+                    <h1 className='text-orange-800'>Add to Cart</h1>
                 </button>
             </div >
             <div className='h-2/10'>

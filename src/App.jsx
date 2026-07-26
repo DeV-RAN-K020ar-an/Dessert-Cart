@@ -21,10 +21,11 @@ const App = () => {
     },
   ]
   const [orderedMenu, setOrderedMenu] = useState(items)
+  const [count, setCount] = useState(1)
   return (
     <main className="h-screen bg-orange-50 flex p-4 gap-6">
-      <Cards orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} />
-      <OrderCard orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} />
+      <Cards orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} setCount={setCount} count={count} />
+      <OrderCard orderedMenu={orderedMenu} setOrderedMenu={setOrderedMenu} count={count} setCount={setCount} />
     </main>
   )
 }
