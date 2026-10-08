@@ -4,20 +4,19 @@ import { BsCartPlus } from "react-icons/bs";
 const Card = ({ data, orderedMenu, setOrderedMenu, setCount, count }) => {
     const { image, type, dessert, price } = data
     const handleAddToCart = () => {
-        setCount(count + 1)
         const obj = {
             name: dessert,
             quantity: count,
             price: price,
         }
+        console.log(obj.name)
         setOrderedMenu([...orderedMenu, obj])
-
     }
     return (
         <div className='h-75 w-full flex flex-col'>
             <div className='h-8/10 w-full flex flex-col items-center'>
                 < img src={image} className='h-full w-full rounded-xl object-cover' />
-                <button className='bg-white rounded-4xl border border-gray-500/30 w-38 flex items-center justify-center gap-2 h-11 relative z-10 bottom-5 font-medium hover:cursor-pointer outline-none' onClick={handleAddToCart}>
+                <button className='bg-white hover:bg-white/50 hover:backdrop-blur-sm rounded-4xl border border-gray-500/30 w-38 flex items-center justify-center gap-2 h-11 relative z-10 bottom-5 font-medium hover:cursor-pointer outline-none' onClick={handleAddToCart}>
                     <BsCartPlus className='text-orange-800 text-[23px]' />
                     <h1 className='text-orange-800'>Add to Cart</h1>
                 </button>

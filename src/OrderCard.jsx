@@ -1,25 +1,23 @@
 import { BiXCircle } from "react-icons/bi"
 const OrderCard = ({ orderedMenu, setOrderedMenu, count, setCount }) => {
     const handleDelete = (i) => {
-        let filter = orderedMenu.filter((order, index) => {
+        let filter = orderedMenu.filter((_, index) => {
             return i != index
         })
-        setCount(count = 1)
+        setCount(1)
         setOrderedMenu(filter)
     }
-
     let current = 0
-    let total = orderedMenu.forEach((currentValue) => {
+    const total = orderedMenu.forEach((currentValue) => {
         let total = currentValue.price * currentValue.quantity
         return current = current + total
     })
-
     return (
-        <div className="h-7/10 w-102 rounded-xl bg-white border border-gray-950/10 p-4 flex flex-col justify-between overflow-auto">
-            <div>
+        <div className="h-7/10 w-115 rounded-xl bg-white border border-gray-950/10 p-4 flex flex-col justify-between overflow-auto">
+            <div className="h-1/10 w-full">
                 <h1 className="text-xl font-bold text-orange-700">Your Cart ( {orderedMenu.length} )</h1>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col p-3 h-5/10 overflow-auto">
                 {orderedMenu.map((menu, i) => {
                     return (
                         <div className="flex justify-between items-center border-b border-slate-300 py-4">
@@ -40,7 +38,7 @@ const OrderCard = ({ orderedMenu, setOrderedMenu, count, setCount }) => {
                     )
                 })}
             </div>
-            <div className="flex justify-between items-center py-6">
+            <div className="flex justify-between items-center pt-6 h-1/10">
                 <h4 className="font-light">Order Total</h4>
                 <h1 className="text-xl font-bold">{current} AFN</h1>
             </div>
